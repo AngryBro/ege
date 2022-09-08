@@ -7,9 +7,5 @@ for i in range(1,n):
     for l in range(2):
         for k in range(3):
             for j in range(5):
-                d[k][j][i]=max(d[k][j][i],d[(k-a[i][l])%3][(j-a[i][l])%5][i-1]+a[i][l])
-e = []
-for j in range(1,5):
-    for k in range(1,3):
-        e.append(d[k][j][n-1])
-print(max(e)) #454 3695118
+                d[k][j][i]=max(d[k][j][i-1],d[k][j][i],d[(k-a[i][not l])%3][(j-a[i][l])%5][i-1]+a[i][l])
+print(max([d[k][j][n-1] for k in range(1,3) for j in range(1,5)])) #453 3695118
